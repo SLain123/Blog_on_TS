@@ -1,0 +1,31 @@
+$error-color: #f5222d;
+
+.line {
+  width: 100%;
+  border: none;
+  color: #e8e8e8;
+  background-color: #e8e8e8;
+  height: 1px;
+  margin-top: 21px;
+}
+
+.checkboxContainer {
+  display: flex;
+}
+
+.checkbox {
+  margin-top: 14px;
+  margin-right: 12px;
+}
+
+.label {
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 22px;
+  color: #262626;
+  margin-top: 12px;
+}
+
+.errorLabel {
+  color: $error-color;
+}
