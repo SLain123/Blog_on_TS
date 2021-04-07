@@ -1,6 +1,23 @@
+import { DataType, ContentType } from '../../types/types';
+
 const initState = { articles: [], articlesCount: 0, page: 1, onLoad: true, onFail: false };
 
-const listReducer = (state = initState, action) => {
+type ListStateType = {
+  articles: ContentType[];
+  articlesCount: number;
+  page: number;
+  onFail: boolean;
+  onLoad: boolean;
+};
+
+type ActionType = {
+  type: string;
+  error: boolean;
+  page: number;
+  data: DataType;
+};
+
+const listReducer = (state: ListStateType = initState, action: ActionType): ListStateType => {
   switch (action.type) {
     case 'SET_LOAD_STATUS': {
       return { ...state, onLoad: true, onFail: false };

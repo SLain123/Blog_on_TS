@@ -1,29 +1,21 @@
-export interface IUser {
-  id: number;
-  email: string;
-  createdAt: string;
-  updatedAt: string;
-  username: string;
-  bio: null | string;
-  image: string;
-  token: string;
-}
-interface IUserState {
-  statusReg: boolean;
-  onSuccessReg: boolean;
-  statusAuth: boolean;
-  userInfo: IUser | boolean;
-  statusEdit: boolean;
-  isLogin: boolean;
-  fetchFail: boolean;
-}
+import { UserType } from '../../types/types';
 
-interface IAction {
+type UserStateType = {
+  statusReg?: boolean | string;
+  onSuccessReg?: boolean;
+  statusAuth?: boolean | string;
+  userInfo?: UserType | boolean;
+  statusEdit?: boolean | string;
+  isLogin?: boolean;
+  fetchFail?: boolean;
+};
+
+type ActionType = {
   type: string;
   errors?: string;
   status?: boolean;
-  user?: IUser;
-}
+  user?: UserType;
+};
 
 const initState = {
   statusReg: false,
@@ -35,7 +27,7 @@ const initState = {
   fetchFail: false,
 };
 
-const userReducer = (state: IUserState = initState, action: IAction) => {
+const userReducer = (state: UserStateType = initState, action: ActionType): UserStateType => {
   switch (action.type) {
     case 'CHANGE_REG_STATUS': {
       return { ...state, statusReg: action.errors };

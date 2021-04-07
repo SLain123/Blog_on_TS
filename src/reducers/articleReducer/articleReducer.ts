@@ -1,3 +1,22 @@
+import { ContentType } from '../../types/types';
+
+type ArticleStateType = {
+  content: null | ContentType;
+  onLoad: boolean;
+  onFail: boolean | string;
+  createEditStatus?: boolean;
+  isUserEdit: boolean;
+  displayModal: boolean;
+};
+
+type ActionType = {
+  type: string;
+  content: ContentType;
+  error: string;
+  onFail: boolean | string;
+  status: boolean;
+};
+
 const initState = {
   content: null,
   onLoad: true,
@@ -7,7 +26,7 @@ const initState = {
   displayModal: false,
 };
 
-const articleReducer = (state = initState, action) => {
+const articleReducer = (state: ArticleStateType = initState, action: ActionType): ArticleStateType => {
   switch (action.type) {
     case 'GET_ARTICLE':
       return { ...state, content: action.content, onLoad: false };
